@@ -1,0 +1,164 @@
+
+.main {
+    color: white;
+    border-radius: 8px;
+    margin: auto;
+    font-family: 'Verdana', sans-serif;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; 
+    padding: 10px;
+}
+
+.spacer {
+    width: 34px;    
+    height: 34px;   
+    visibility: hidden;     
+}
+
+
+.title-container {
+    flex-grow: 1; 
+    display: flex; 
+    justify-content: center;
+    text-align: center;
+}
+
+.challenges-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.challenges-button img:hover {
+    background: pink;
+    cursor: pointer;
+    border: 5 5 pink;
+}
+
+.challenges-button img {
+    width: 34px; 
+    height: 34px;
+}
+
+.header h1 {
+    justify-content: center;
+    font-size: larger;
+    font-weight: bold;
+
+}
+
+.leaderboard {
+    display: flex;
+    flex-direction: column;
+    width: 100%;    
+    background-color: #1e2237;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    margin-top: 20px;
+    align-items: center;
+    overflow-y: auto;
+    max-height: calc(100vh - 79px - 250px - 20px);
+}
+
+.entry {
+    display: flex;
+    height: 40px;
+    width: 90%;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid #333;
+    justify-content: center; 
+}
+
+.entry:last-child {
+    border-bottom: none;
+}
+
+.rank {
+    margin-right: 15px;
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.name {
+    flex-grow: 1;
+    font-size: 16px;
+}
+
+.score {
+    font-weight: bold;
+    font-size: 18px;
+}
+
+
+.podium {
+    height: 250px;
+    display: flex;
+    margin: 10px;
+    align-items: flex-end;
+    justify-content: center;
+}
+
+.first-place {
+    position: relative; 
+    display: flex; 
+    flex-direction: column;
+    width: 200px;
+    height: 200px;
+    border-top-left-radius: 8%;
+    border-top-right-radius: 8%;
+    background-color: #252a40;
+}
+.first-place img {
+    position: absolute;
+    top: -45px; 
+    width: 40px;
+    height: 40px;
+    left: 50%;
+    transform: translate(-50%);
+    }
+
+.second-place {
+    display: flex; 
+    flex-direction: column;
+    width: 200px;
+    height: 160px;
+    border-top-left-radius: 8%;
+    border-bottom-left-radius: 8%;
+    background-color: #1e2237;
+}
+
+.third-place {
+    display: flex; 
+    flex-direction: column;
+    width: 200px;
+    height: 120px;
+    border-top-right-radius: 8%;
+    border-bottom-right-radius: 8%;
+    background-color: #1e2237;
+}
+
+.podium h1 {
+    font-size: 20px;
+    font-weight: 600;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    margin: 10px;
+    margin-bottom: 0px;
+    padding-bottom: 0px;
+    /* height: 50px; */
+}
+
+.podium h2 {
+    font-size: 18px;
+    font-weight: 600;
+    color: white;
+    text-align: center;
+    margin-bottom: 100px;
+    margin-top: 10px;
+}
