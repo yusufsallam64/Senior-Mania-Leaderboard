@@ -6,7 +6,7 @@ import googledrive from './google-drive.png';
 import { GoogleSpreadsheet } from 'google-spreadsheet';
 import { JWT } from 'google-auth-library';
 
-import creds from '../assets/senior-mania-svc-creds.json';
+// import creds from '../assets/senior-mania-svc-creds.json';
 import { LeaderboardEntry } from '@/components/LeaderboardEntry';
 
 export type TeamEntry = {
