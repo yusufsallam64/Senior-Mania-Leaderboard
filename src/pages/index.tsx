@@ -79,16 +79,31 @@ export async function getServerSideProps() {
 
     const doc = new GoogleSpreadsheet('1xCXQvmwsHsqPLKhehIpf8an3NUlKT3obWrcEON_0gjA', serviceAccountAuth);
     await doc.loadInfo(); // loads document properties and worksheets
-
-    const sheet = doc.sheetsByIndex[0]; // or use `doc.sheetsById[id]` or `doc.sheetsByTitle[title]`
-    const rows = (await sheet.getRows({offset: 1}));
-
     let teamPoints: TeamEntry[] = [];
 
-    rows.map((row) => {
-        teamPoints.push({teamName: row.get('Team Name'), points: row.get('POINTS')});
-    })
+    for(let i = 0; i < 3; i++) {
+        try {
+            const sheet = doc.sheetsByIndex[i]; // or use `doc.sheetsById[id]` or `doc.sheetsByTitle[title]`
+            const rows = (await sheet.getRows({offset: 1}));        
+            const teamNames = teamPoints.map((team) => team.teamName)
+            rows.map((row) => {
+                if(row.get('Team Name') === '' || row.get('Team Name') === undefined || row.get('POINTS') === '' || row.get('POINTS') === undefined) return;
 
+                if(teamNames.includes(row.get('Team Name'))) {
+                    const team = teamPoints.find((team) => team.teamName === row.get('Team Name'));
+                    if(team) {
+                        team.points += parseInt(row.get('POINTS'));
+                    }
+                } else {
+                    teamPoints.push({teamName: row.get('Team Name'), points: parseInt(row.get('POINTS'))});
+                }
+            })
+        } catch (e) {
+            console.error("Failed to load document info. Sheet idx: " + i + "\nError: " + e);
+            break;
+        }
+    }
+    console.log(teamPoints);
     let teams = teamPoints.sort((a, b) => b.points - a.points);
 
     return { 
